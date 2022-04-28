@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gird.css">
+    <link rel="stylesheet" href="scripts.js">
+    <meta name="author" content="Syahrizaldev">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+    <title>Document</title>
+    <style>
+         :root {
+            --smaller: .75;
+        }
+        
+        .container_3 {
+            width: 90%;
+            color: #333;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        h4 {
+            color: #000;
+            font-weight: normal;
+            letter-spacing: .125rem;
+            text-transform: uppercase;
+        }
+        
+        li {
+            display: inline-block;
+            font-size: 1.5em;
+            list-style-type: none;
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+        
+        li span {
+            display: block;
+            font-size: 4.5rem;
+        }
+        
+        .emoji {
+            display: none;
+            padding: 1rem;
+        }
+        
+        .emoji span {
+            font-size: 4rem;
+            padding: 0 .5rem;
+        }
+        
+        @media all and (max-width: 768px) {
+            h1 {
+                font-size: calc(1.5rem * var(--smaller));
+            }
+            li {
+                font-size: calc(1.125rem * var(--smaller));
+            }
+            li span {
+                font-size: calc(3.375rem * var(--smaller));
+            }
+        }
+        
+        .co_vat_1 {
+            width: 100%;
+            height: 500px;
+            margin: 0 auto;
+            box-shadow: #000 0px 0px 10px;
+            /* margin-bottom: 50px; */
+            margin-top: 50px;
+        }
+        
+        .image_1 {
+            width: 40%;
+            height: 500px;
+            float: left;
+            background-image: url("./access/image/Dracula-5a848d56642dca00366e4238.webp");
+            background-size: 350px;
+            background-repeat: no-repeat;
+            margin-left: 30px;
+        }
+        
+        .text {
+            width: 50%;
+            height: 450px;
+            float: right;
+            background-color: #fff;
+            margin-top: 20px;
+            margin-right: 40px;
+        }
+        
+        h3 {
+            color: rgb(247, 41, 41);
+            font-size: 30px;
+        }
+        
+        h3::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: rgb(247, 41, 41);
+            margin-top: 10px;
+        }
+        
+        p {
+            padding-top: 10px;
+            color: rgb(8, 6, 6);
+            font-size: 20px;
+            line-height: 30px;
+        }
+        
+        .box {
+            width: 50%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            border: 2px solid #fff;
+            border-radius: 20px/50px;
+            background-clip: padding-box;
+            text-align: center;
+        }
+        
+        .button {
+            font-size: 1em;
+            padding: 20px;
+            color: rgb(1, 240, 89);
+            border: 2px solid #06D85F;
+            border-radius: 20px/50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+        
+        .button:hover {
+            background: #06D85F;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 300ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .popup {
+            margin: 50px auto;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            width: 40%;
+            position: relative;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .popup .close:hover {
+            color: #06D85F;
+        }
+        
+        .popup .content {
+            max-height: 40%;
+            overflow: auto;
+        }
+        
+        .searchbox-wrap {
+            display: flex;
+            width: 500px;
+            margin-top: 3%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .searchbox-wrap input {
+            flex: 1;
+            padding: 30px 20px;
+            font-size: 1em;
+            -webkit-border-top-left-radius: 25px;
+            -webkit-border-bottom-left-radius: 25px;
+            -moz-border-radius-topleft: 25px;
+            -moz-border-radius-bottomleft: 25px;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            box-shadow: none;
+            border: none;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+        }
+        
+        .searchbox-wrap button {
+            padding-right: 10px;
+            background-color: rgb(86, 243, 152);
+            -webkit-border-top-right-radius: 25px;
+            -webkit-border-bottom-right-radius: 25px;
+            -moz-border-radius-topright: 25px;
+            -moz-border-radius-bottomright: 25px;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.19);
+            border: none;
+            cursor: pointer;
+            cursor: hand;
+        }
+        
+        .searchbox-wrap button span {
+            margin-left: 50px;
+            padding: 24px 45px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #fff;
+            background-color: #f54e59;
+            border-radius: 20px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+        }
+        
+        .searchbox-wrap button span:hover {
+            background-color: #d6121f;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.19);
+        }
+        
+        .alert-box {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+            display: none;
+        }
+        /* .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 100px;
+            width: 100%;
+        } */
+        
+        .footer {
+            margin-top: 40px;
+        }
+        /* ---------------------------------------------------------- */
+        /* --------------------------------------------------------- */
+        /* -------------------------------------------------------- */
+        
+        .container_2 {
+            margin-top: 40px;
+            padding: 4rem 2rem;
+            margin: 0 auto;
+            max-width: 75rem;
+            width: 90%;
+        }
+        
+        .main {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+            margin: 0 auto;
+            max-width: 75rem;
+            width: 90%;
+        }
+        
+        .main .container_2 .glider-contain .glider .card-image {
+            margin-right: 0.5rem;
+            background: #ffffff;
+            border: none;
+            outline: none;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            border-radius: 2px;
+        }
+        
+        .main .container_2 .glider-contain .glider .card-image img {
+            display: block;
+            position: relative;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: auto;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+        
+        .main .container_2 .glider-contain .glider-prev,
+        .main .container_2 .glider-contain .glider-next {
+            font-size: 1.5rem;
+            background: #454545;
+            color: #ffffff;
+            margin-top: 1rem;
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            border-radius: 50%;
+        }
+        
+        .main .container_2 .glider-contain .glider-prev .fas,
+        .main .container_2 .glider-contain .glider-next .fas {
+            margin-left: 1rem;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .main .glider-contain .glider-prev,
+            .main .glider-contain .glider-next {
+                display: none;
+            }
+        }
+        
+        @media only screen and (min-width: 769px) {
+            .main .glider-contain .dots {
+                display: none;
+            }
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #454545;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .title {
+            margin-bottom: 30px;
+        }
+        
+        table {
+            margin-top: 50px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+        }
+        
+        .price_curent {
+            color: #454545;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="#Product">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="teammember.html">Teammember</a></li>
+        </ul>
+        <div class="search_icon">
+            <img src="./access/image/icon/loupe.png" alt="">
+        </div>
+    </div>
+    <div class="container_3">
+        <h4 id="headline">Product auction end countdown</h4>
+        <div id="countdown">
+            <ul>
+                <li><span id="days"></span>days</li>
+                <li><span id="hours"></span>Hours</li>
+                <li><span id="minutes"></span>Minutes</li>
+                <li><span id="seconds"></span>Seconds</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- partial -->
+    <script src="./script.js"></script>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="co_vat_1">
+                <div class="image_1">
+
+                </div>
+                <div class="text">
+                    <h3>Dracula Record-Setting Movie Poster</h3>
+                    <p>This Dracula movie poster from 1931 broke the world record for the most expensive ever sold at auction. Heritage Auctions sold the poster in 2017 for $525,800. It is one of two of the only known surviving examples. "The poster surpassed
+                        the previous auction record of $478,000, which was also set (twice) by Heritage Auctions. Heritage had just sold the only known surviving Italian issue movie poster from 1946 for Casablanca in July 2017, which matched their own
+                        previous world record from November 2014 for an only-known 1927 copy of the poster for London After Midnight," according to a Heritage Auctions press release</p>
+                    <div class="box">
+                        <a class="button" href="#popup1">Auction</a>
+                    </div>
+
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <h4>Enter the price you want to buy</h4>
+                                <div class="searchbox-wrap">
+                                    <input type="number" placeholder="Enter Price">
+                                    <button id="success-btn"><span>Send</span> </button>
+                                </div>
+                                <div class="alert-box success"> Your price has been recorded </div>
+                            </div>
+                            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+                            <script src="test.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------------------- -->
+    <!-- ----------------------------------------------------------------------------------- -->
+    <!-- ----------------------------------------------------------------------------------- -->
+    <div class="title">
+        <h2>Image of Products</h2>
+    </div>
+    <main class="main">
+        <div class="container_2">
+            <div class="glider-contain">
+                <div class="glider">
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                    <div class="card-image">
+                        <img src="./access/image/Dracula-5a848d56642dca00366e4238.webp" alt="Slider Image">
+                    </div>
+                </div>
+                <span role="button" aria-label="Previous" class="glider-prev"><i class="fas fa-chevron-left"></i></span>
+                <span role="button" aria-label="Next" class="glider-next"><i class="fas fa-chevron-right"></i></span>
+                <span role="tablist" class="dots"></span>
+            </div>
+        </div>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js'></script>
+    <script src="./scripts.js"></script>
+    <!-- ------------------------------------------------------------------------------------------------------------------ -->
+    <table border="1">
+        <p class="price_curent">Current price of the product</p>
+        <tr style="background-color: rgb(8, 107, 255)">
+            <td>Name</td>
+            <td>Price Of auction</td>
+            <td>Times</td>
+        </tr>
+        <tr>
+            <td>User1 </td>
+            <td>$100</td>
+            <td>20/04/2022</td>
+        </tr>
+    </table>
+    <!--------------------------------------------------------------------------------------------------------------------  -->
+    <!--------------------------------------------------------------------------------------------------------------------  -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="footer-content">
+                <div class="section group">
+                    <div class="col span_1_of_4">
+                        <div class="footer-logo">
+                            <img src="./access/image/logo.jpg" alt="logo">
+                        </div>
+                    </div>
+                    <div class="col span_1_of_4">
+                        <h5>About us</h5>
+                        <p style="color: aliceblue;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo earum sed ratione debitis possimus, qui rem explicabo iste eaque, cum necessitatibus laborum, tempora dignissimos quos deserunt nihil. Earum, vel maiores.</p>
+                    </div>
+                    <div class="col span_1_of_4">
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.html#product">Products</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="teammember.html">Teammember</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col span_1_of_4">
+                        <h5>follow us</h5>
+                        <div class="footer-social">
+                            <ul>
+                                <li>
+                                    <a href="#"><img src="./access/image/icon/facebook.png" alt="facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="./access/image/icon/instagram.png" alt="instagram"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="./access/image/icon/youtube.png" alt="youtube"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="./access/image/icon/gmail.png" alt="email"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
